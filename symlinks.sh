@@ -11,7 +11,7 @@ rm $HOME/.Xmodmap
 rm $HOME/.Xdefaults
 rm $HOME/.fehbg
 
-ln -s $HOME/nixos-config/dotfiles/bashrc $HOME/.bashrc
+ln -s $HOME/nixos-config/dotfiles/zshrc $HOME/.zshrc
 ln -s $HOME/nixos-config/dotfiles/gitconfig $HOME/.gitconfig
 ln -s $HOME/nixos-config/dotfiles/xsession $HOME/.xsession
 ln -s $HOME/nixos-config/dotfiles/Xmodmap $HOME/.Xmodmap

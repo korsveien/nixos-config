@@ -15,6 +15,7 @@
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
    environment.systemPackages = with pkgs; [
+       autojump
 	   cloc
 	   coreutils
 	   dmenu
@@ -123,6 +124,10 @@ programs.ssh = {
      extraGroups = ["wheel"];
      isNormalUser = true;
      uid = 1000;
+	 shell = "${pkgs.zsh}/bin/zsh";
+	 openssh.authorizedKeys.keyFiles = [
+		"/home/pederpus/.ssh/id_rsa.pub"
+	 ];
    };
 
   # The NixOS release to be compatible with for stateful data such as databases.

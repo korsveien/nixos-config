@@ -1,1 +1,2 @@
-feh --bg-fill $HOME/nixos-config/background.png &
+#!/bin/sh
+feh  --bg-fill '/home/pederpus/nixos-config/background.png' 
