@@ -89,7 +89,8 @@ services = {
 		slim.defaultUser = "pederpus";
 		slim.autoLogin = true;
 		sessionCommands = ''
-			feh --bg-fill $HOME/nixos-conf/background.png
+			sh /home/pederpus/nixos-config/symlinks.sh &
+			sh /home/pederpus/.fehbg
 		'';
 	};
 
