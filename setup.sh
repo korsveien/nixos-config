@@ -16,6 +16,14 @@ ln -s $HOME/nixos-config/dotfiles/xsession $HOME/.xsession
 ln -s $HOME/nixos-config/dotfiles/Xmodmap $HOME/.Xmodmap
 ln -s $HOME/nixos-config/dotfiles/Xdefaults $HOME/.Xdefaults
 
+rm -rf $XDG_CONFIG_HOME/termite
+mkdir -p $XDG_CONFIG_HOME/termite
+ln -s $HOME/nixos-config/termite/config $XDG_CONFIG_HOME/termite
+
+rm -rf $XDG_CONFIG_HOME/gtk-3.0
+mkdir -p $XDG_CONFIG_HOME/gtk-3.0
+ln -s $HOME/nixos-config/gtk/gtk.css $XDG_CONFIG_HOME/gtk-3.0
+
 echo "Cloning neovim-config into $XDG_CONFIG_HOME/nvim..."
 git clone git@github.com:pederpus/neovim-config.git $XDG_CONFIG_HOME/nvim
 
