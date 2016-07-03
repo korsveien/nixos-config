@@ -1,3 +1,0 @@
-feh --bg-fill ~/home/pederpus/nixos-config/desktop.png &
-
-xmodmap $HOME/.Xmodmap

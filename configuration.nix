@@ -72,7 +72,12 @@ services = {
         layout = "us";
 	xkbOptions = "eurosign:e";
 
-  	displayManager.lightdm.enable = true;
+
+	displayManager = {
+		slim.enable = true;
+		slim.defaultUser = "pederpus";
+		slim.autoLogin = true;
+	};
 
 	desktopManager.xterm.enable = false;
 
