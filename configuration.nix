@@ -13,19 +13,28 @@
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
    environment.systemPackages = with pkgs; [
-	git
-	termite
-	rofi
-	htop
-	i3lock
-        wget
-        zsh
-        vim 
-        neovim
-        firefox
-	feh
-        coreutils
-	dmenu
+	   cloc
+	   coreutils
+	   dmenu
+	   dropbox
+	   dropbox-cli
+	   feh
+	   firefox
+	   git
+	   htop
+	   htop
+	   httpie
+	   i3lock
+	   neovim
+	   nmap
+	   rofi
+	   silver-searcher
+	   termite
+	   tree
+	   unzip
+	   vim 
+	   wget
+	   zsh
    ];
 
 boot = {
@@ -92,10 +101,6 @@ services = {
 environment.sessionVariables = {
 	EDITOR="nvim";
 	XDG_CONFIG_HOME="/home/pederpus/.config";
-	NIX_PATH = =pkgs.lib.mkForce [
-		"nixos-config=/home/pederpus/nixos-config/config.nix";
-	]
-
 };
 
 
