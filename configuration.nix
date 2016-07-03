@@ -88,9 +88,13 @@ services = {
 		slim.enable = true;
 		slim.defaultUser = "pederpus";
 		slim.autoLogin = true;
+		sessionCommands = ''
+			feh --bg-fill $HOME/nixos-conf/background.png
+		'';
 	};
 
 	desktopManager.xterm.enable = false;
+	desktopManager.default = "none";
 
 	windowManager = {
 		xmonad.enable = true;
