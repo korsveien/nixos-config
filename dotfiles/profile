@@ -1,1 +1,11 @@
 export XDG_CONFIG_HOME= $HOME/.config
+
+# Aliases
+alias ..="cd .."
+
+# Git aliases
+alias g="git"
+alias gst="git status"
+alias gcam="git commit -am"
+alias gp="git push"
+alias gcm="git checkout master"
