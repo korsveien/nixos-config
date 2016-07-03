@@ -2,23 +2,23 @@
 
 echo "Set config location..."
 mkdir -p $HOME/.config
-export XDG_CONFIG_HOME=/home/pederpus/.config
+export XDG_CONFIG_HOME=$HOME/.config
 
 echo "Setting up symbolic links..."
-ln -s /home/pederpus/nixos-config/configuration.nix /etc/nixos/configuration.nix
-ln -s /etc/nixos/hardware-configuration.nix /home/pederpus/nixos-config/hardware-configuration.nix
+#ln -s $HOME/nixos-config/configuration.nix /etc/nixos/configuration.nix
+#ln -s /etc/nixos/hardware-configuration.nix $HOME/nixos-config/hardware-configuration.nix
 
-rm /home/pederpus/.gitconfig
-rm /home/pederpus/.profile
-rm /home/pederpus/.xsession
-rm /home/pederpus/.Xmodmap
-rm /home/pederpus/.Xresources
+rm $HOME/.gitconfig
+rm $HOME/.bashrc
+rm $HOME/.xsession
+rm $HOME/.Xmodmap
+rm $HOME/.Xresources
 
-ln -s /home/pederpus/nixos-config/dotfiles/profile /home/pederpus/.profile
-ln -s /home/pederpus/nixos-config/dotfiles/gitconfig /home/pederpus/.gitconfig
-ln -s /home/pederpus/nixos-config/dotfiles/xsession /home/pederpus/.xsession
-ln -s /home/pederpus/nixos-config/dotfiles/Xmodmap /home/pederpus/.Xmodmap
-ln -s /home/pederpus/nixos-config/dotfiles/Xresources /home/pederpus/.Xresources
+ln -s $HOME/nixos-config/dotfiles/bashrc $HOME/.bashrc
+ln -s $HOME/nixos-config/dotfiles/gitconfig $HOME/.gitconfig
+ln -s $HOME/nixos-config/dotfiles/xsession $HOME/.xsession
+ln -s $HOME/nixos-config/dotfiles/Xmodmap $HOME/.Xmodmap
+ln -s $HOME/nixos-config/dotfiles/Xresources $HOME/.Xresources
 
 echo "Cloning neovim-config into $XDG_CONFIG_HOME/nvim..."
 git clone git@github.com:pederpus/neovim-config.git $XDG_CONFIG_HOME/nvim
