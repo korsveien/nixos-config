@@ -110,6 +110,12 @@ environment.sessionVariables = {
 	XDG_CONFIG_HOME="/home/pederpus/.config";
 };
 
+# Enable ssh-add. On by default.
+programs.ssh = {
+	startAgent = true;
+	agentTimeout = null; #keep keys in memory forever.
+};
+
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
    users.extraUsers.pederpus = {
