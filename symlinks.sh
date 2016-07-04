@@ -5,13 +5,15 @@ echo "Setting up symbolic links..."
 #ln -s /etc/nixos/hardware-configuration.nix $HOME/nixos-config/hardware-configuration.nix
 
 rm $HOME/.gitconfig
-rm $HOME/.bashrc
+rm $HOME/.zshrc
 rm $HOME/.xsession
 rm $HOME/.Xmodmap
 rm $HOME/.Xdefaults
 rm $HOME/.fehbg
 rm $HOME/.xmonad/xmonad.hs
+rm $HOME/.ssh/config
 
+ln -s $HOME/nixos-config/dotfiles/ssh_config $HOME/.ssh/config
 ln -s $HOME/nixos-config/dotfiles/zshrc $HOME/.zshrc
 ln -s $HOME/nixos-config/dotfiles/gitconfig $HOME/.gitconfig
 ln -s $HOME/nixos-config/dotfiles/xsession $HOME/.xsession
