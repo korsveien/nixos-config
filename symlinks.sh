@@ -10,6 +10,7 @@ rm $HOME/.xsession
 rm $HOME/.Xmodmap
 rm $HOME/.Xdefaults
 rm $HOME/.fehbg
+rm $HOME/.xmonad/xmonad.hs
 
 ln -s $HOME/nixos-config/dotfiles/zshrc $HOME/.zshrc
 ln -s $HOME/nixos-config/dotfiles/gitconfig $HOME/.gitconfig
@@ -17,6 +18,10 @@ ln -s $HOME/nixos-config/dotfiles/xsession $HOME/.xsession
 ln -s $HOME/nixos-config/dotfiles/Xmodmap $HOME/.Xmodmap
 ln -s $HOME/nixos-config/dotfiles/Xdefaults $HOME/.Xdefaults
 ln -s $HOME/nixos-config/dotfiles/fehbg $HOME/.fehbg
+
+rm -rf $HOME/.xmonad
+mkdir -p $HOME/.xmonad
+ln -s $HOME/nixos-config/dotfiles/xmonad.hs $HOME/.xmonad/xmonad.hs
 
 rm -rf $XDG_CONFIG_HOME/termite
 mkdir -p $XDG_CONFIG_HOME/termite
