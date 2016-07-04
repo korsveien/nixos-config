@@ -13,4 +13,5 @@ myLayout = spacing 15 $ Tall 1 (3/100) (1/2)
 main :: IO ()
 main = do xmonad $ defaultConfig { terminal = "termite"
 	, layoutHook = myLayout
-	} `additionalKeysP` [ ("M-w", (runOrRaiseMaster "firefox" (className =? "Firefox"))) ]
+	} `additionalKeysP` [ ("M-w", raiseBrowser)
+						, ("M-e", raiseEditor)]
