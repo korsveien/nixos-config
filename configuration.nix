@@ -16,9 +16,8 @@
   # $ nix-env -qaP | grep wget
    environment.systemPackages = with pkgs; [
        autojump
-	   cloc
 	   coreutils
-	   dmenu
+	   chromium
 	   dropbox
 	   dropbox-cli
 	   feh
@@ -38,6 +37,7 @@
 	   vim 
 	   wget
 	   zsh
+	   xclip
    ];
 
 boot = {
