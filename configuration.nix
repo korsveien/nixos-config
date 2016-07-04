@@ -15,13 +15,13 @@
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
    environment.systemPackages = with pkgs; [
-       autojump
-	   coreutils
 	   chromium
+	   coreutils
 	   dropbox
 	   dropbox-cli
 	   feh
 	   firefox
+	   ghc
 	   git
 	   htop
 	   htop
@@ -36,8 +36,9 @@
 	   unzip
 	   vim 
 	   wget
-	   zsh
 	   xclip
+	   zsh
+       autojump
    ];
 
 boot = {
