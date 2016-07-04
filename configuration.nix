@@ -15,6 +15,7 @@
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
    environment.systemPackages = with pkgs; [
+	   chromium
 	   coreutils
 	   dropbox
 	   dropbox-cli
@@ -29,6 +30,7 @@
 	   i3lock
 	   neovim
 	   nmap
+	   openjdk
 	   rofi
 	   silver-searcher
 	   termite
