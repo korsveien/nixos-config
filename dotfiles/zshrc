@@ -1,6 +1,10 @@
 # Oh-my-zsh
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="nipeko"
+plugins=(git )
+
+unsetopt correct_all
+
 source $ZSH/oh-my-zsh.sh
 
 # Git aliases
@@ -30,7 +34,7 @@ alias l='ls -lah'
 alias ll='ls -lh'
 alias la='ls -lAh'
 
-alias q='nix-env -qaP | grep -i'
+alias q="nix-env -qaP --description '.*' | grep -i"
 alias nv='nvim $HOME/nixos-config/configuration.nix'
 alias zs='source $HOME/.zshrc'
 alias zv='nvim $HOME/.zshrc'

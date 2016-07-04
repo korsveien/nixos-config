@@ -10,13 +10,18 @@
       ./hardware-configuration.nix
     ];
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+	  allowUnfree = true;
+  };
+
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
    environment.systemPackages = with pkgs; [
 	   chromium
 	   coreutils
+	   screenfetch
+	   dmenu
 	   dropbox
 	   dropbox-cli
 	   feh
@@ -25,9 +30,9 @@
 	   git
 	   gtk-engine-murrine
 	   htop
-	   htop
 	   httpie
 	   i3lock
+	   irssi
 	   neovim
 	   nmap
 	   openjdk
@@ -111,6 +116,7 @@ services = {
 
 environment.sessionVariables = {
 	EDITOR="nvim";
+	BROWSER="firefox";
 	XDG_CONFIG_HOME="/home/pederpus/.config";
 };
 
