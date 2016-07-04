@@ -22,7 +22,6 @@
 	   firefox
 	   ghc
 	   git
-	   gnome-themes-standard
 	   gtk-engine-murrine
 	   htop
 	   htop
