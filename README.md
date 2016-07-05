@@ -1,7 +1,6 @@
 # nixos-config
 
 ## TODO
-- fix ssh-agent
 - add xmobar with clock and space number
 - add idea
 - add oracle-xe

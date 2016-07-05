@@ -46,6 +46,7 @@
 	   wget
 	   xclip
        autojump
+	   haskellPackages.xmobar
    ];
 
 	boot = {
@@ -100,7 +101,8 @@
 			sessionCommands = ''
 				sh /home/pederpus/nixos-config/symlinks.sh &
 				sh /home/pederpus/.fehbg &
-				ssh-add
+				ssh-add &
+				xmobar
 			'';
 		};
 

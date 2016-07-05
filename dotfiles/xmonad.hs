@@ -1,7 +1,8 @@
-import XMonad
-import XMonad.Layout.Spacing
-import XMonad.Actions.WindowGo
 import System.IO
+import XMonad
+import XMonad.Actions.WindowGo
+import XMonad.Hooks.ManageDocks
+import XMonad.Layout.Spacing
 import XMonad.Util.EZConfig(additionalKeysP)
 
 -- put a 2px space around every window
@@ -12,6 +13,6 @@ myLayout = spacing 15 $ Tall 1 (3/100) (1/2)
 
 main :: IO ()
 main = do xmonad $ defaultConfig { terminal = "termite"
-	, layoutHook = myLayout
+	, layoutHook = avoidStruts $ myLayout
 	} `additionalKeysP` [ ("M-w", raiseBrowser)
 						, ("M-e", raiseEditor)]
