@@ -1,9 +1,9 @@
 Config { font = "xft:Hack:pixelsize=13"
-	   , alpha = 0
+	   , alpha = 75
        , border = NoBorder
 	   , bgColor = "black"
 	   , fgColor = "grey"
-	   , position = TopW L 100
+	   , position = TopP 15 15
        , commands = [ Run Date "%d/%m  %H:%M" "date" 10]
        , sepChar = "%"
        , alignSep = "}{"

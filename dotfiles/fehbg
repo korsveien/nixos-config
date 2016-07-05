@@ -1,2 +1,2 @@
 #!/bin/sh
-feh  --bg-fill '/home/pederpus/Pictures/iris-nebula-1920.jpg' 
+feh  --bg-fill '/home/pederpus/nixos-config/background.png' 
