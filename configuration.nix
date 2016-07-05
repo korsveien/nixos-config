@@ -22,6 +22,7 @@
 	   coreutils
 	   screenfetch
 	   dmenu
+	   nodejs
 	   dropbox
 	   dropbox-cli
 	   feh
