@@ -45,20 +45,19 @@
 	   vim 
 	   wget
 	   xclip
-	   zsh
        autojump
    ];
 
-boot = {
-    initrd = {
-        checkJournalingFS = false;
-    };
-    loader.grub = {
-        enable = true;
-        version = 2;
-        device = "/dev/sda";
-    };
-};
+	boot = {
+		initrd = {
+			checkJournalingFS = false;
+		};
+		loader.grub = {
+			enable = true;
+			version = 2;
+			device = "/dev/sda";
+		};
+	};
 
    networking.hostName = "nixos-vbox"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -75,58 +74,64 @@ boot = {
 
   # List services that you want to enable:
 
-fonts = {
-	enableFontDir = true;
-	enableGhostscriptFonts = true;
-	fonts = with pkgs; [
-		hack-font
-		inconsolata
-	];
-};
-
-services = {
-    openssh.enable = true;
-
-    xserver = {
-
-        enable = true;
-        layout = "us";
-	xkbOptions = "eurosign:e";
-
-
-	displayManager = {
-		slim.enable = true;
-		slim.defaultUser = "pederpus";
-		slim.autoLogin = true;
-		sessionCommands = ''
-			sh /home/pederpus/nixos-config/symlinks.sh &
-			sh /home/pederpus/.fehbg
-		'';
+	fonts = {
+		enableFontDir = true;
+		enableGhostscriptFonts = true;
+		fonts = with pkgs; [
+			hack-font
+			inconsolata
+		];
 	};
 
-	desktopManager.xterm.enable = false;
-	desktopManager.default = "none";
+	services = {
+		openssh.enable = true;
 
-	windowManager = {
-		xmonad.enable = true;
-		xmonad.enableContribAndExtras = true;
-		default = "xmonad";
+		xserver = {
+
+			enable = true;
+			layout = "us";
+		xkbOptions = "eurosign:e";
+
+
+		displayManager = {
+			slim.enable = true;
+			slim.defaultUser = "pederpus";
+			slim.autoLogin = true;
+			sessionCommands = ''
+				sh /home/pederpus/nixos-config/symlinks.sh &
+				sh /home/pederpus/.fehbg
+			'';
+		};
+
+		desktopManager.xterm.enable = false;
+		desktopManager.default = "none";
+
+		windowManager = {
+			xmonad.enable = true;
+			xmonad.enableContribAndExtras = true;
+			default = "xmonad";
+		};
+		};
 	};
-    };
-};
 
-environment.sessionVariables = {
-	EDITOR="nvim";
-	BROWSER="firefox";
-	XDG_CONFIG_HOME="/home/pederpus/.config";
-};
+	environment.sessionVariables = {
+		EDITOR="nvim";
+		BROWSER="firefox";
+		XDG_CONFIG_HOME="/home/pederpus/.config";
+	};
 
-# Enable ssh-add. On by default.
-programs.ssh = {
-	startAgent = true;
-	agentTimeout = null; #keep keys in memory forever.
-};
+	# Enable ssh-add. On by default.
+	programs = {
+		ssh = {
+			startAgent = true;
+			agentTimeout = null; #keep keys in memory forever.
+		};
+		zsh.enable = true;
+	};
 
+
+   # Set zsh as default shell system-wide
+   users.defaultUserShell = "/run/current-system/sw/bin/zsh";
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
    users.extraUsers.pederpus = {
@@ -134,7 +139,6 @@ programs.ssh = {
      extraGroups = ["wheel"];
      isNormalUser = true;
      uid = 1000;
-	 shell = "${pkgs.zsh}/bin/zsh";
 	 openssh.authorizedKeys.keyFiles = [
 		"/home/pederpus/.ssh/id_rsa.pub"
 	 ];
