@@ -6,6 +6,7 @@ plugins=(git )
 unsetopt correct_all
 
 source $ZSH/oh-my-zsh.sh
+source $HOME/.env
 
 # Git aliases
 alias g="git"
