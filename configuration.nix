@@ -99,7 +99,8 @@
 			slim.autoLogin = true;
 			sessionCommands = ''
 				sh /home/pederpus/nixos-config/symlinks.sh &
-				sh /home/pederpus/.fehbg
+				sh /home/pederpus/.fehbg &
+				ssh-add
 			'';
 		};
 
