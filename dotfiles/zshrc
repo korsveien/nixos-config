@@ -6,6 +6,7 @@ alias gst="git status"
 alias gcam="git commit -am"
 alias gp="git push"
 alias gcm="git checkout master"
+alias grhh="git reset --hard HEAD"
 
 alias ..='cd ..'
 
