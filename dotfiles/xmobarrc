@@ -2,11 +2,16 @@ Config { font = "xft:Hack:pixelsize=13"
 	   , alpha = 75
        , border = NoBorder
 	   , bgColor = "black"
-	   , fgColor = "grey"
-	   , position = TopP 15 15
-       , commands = [ Run Date "%d/%m  %H:%M" "date" 10]
+	   , fgColor = "white"
+	   , position = Top
+	   , lowerOnStart = True
+	   , allDesktops = False
+	   , persistent = True
+       , commands = [ Run Date "%d/%m  %H:%M" "date" 10
+			        , Run StdinReader
+				    ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "}{%date%"
+       , template = "%StdinReader%} { %date%"
        }
 

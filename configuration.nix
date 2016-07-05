@@ -102,7 +102,6 @@
 				sh /home/pederpus/nixos-config/symlinks.sh &
 				sh /home/pederpus/.fehbg &
 				ssh-add &
-				xmobar &
 			'';
 		};
 
