@@ -28,10 +28,6 @@
 	   firefox
 	   ghc
 	   git
-	   gnome3.gtk
-	   gnome3.gnome-tweak-tool
-	   gnome3.gnome_themes_standard
-	   gtk-engine-murrine
 	   haskellPackages.xmobar
 	   htop
 	   httpie
