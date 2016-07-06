@@ -8,6 +8,6 @@
 - call symlinks and pull-configs on startup
 - add lockscreen
 - uniform gap
-- fix alt-gr [z|l|w] (ae, oe, aa)
+- fix alt-gr z|l|w (ae, oe, aa)
 
 
