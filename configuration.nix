@@ -21,7 +21,6 @@
 	   arc-gtk-theme
 	   chromium
 	   coreutils
-	   dmenu
 	   dropbox
 	   dropbox-cli
 	   feh
