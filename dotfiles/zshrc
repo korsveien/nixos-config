@@ -27,6 +27,7 @@ alias zv='nvim $HOME/.zshrc'
 alias xv='nvim $HOME/.xmonad/xmonad.hs'
 
 alias grep='grep --color'
+alias vim='nvim'
 
 bindkey '^r' history-incremental-search-backward
 
