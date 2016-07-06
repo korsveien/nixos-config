@@ -102,6 +102,8 @@
 
 				sh /home/pederpus/nixos-config/symlinks.sh &
 
+				xrdb -merge $HOME/.Xdefaults
+
 				sh /home/pederpus/.fehbg &
 
 				rofi &
@@ -109,6 +111,9 @@
 				xsetroot -cursor_name left_ptr &
 
 				ssh-add &
+
+				xmodmap $HOME/.Xmodmap
+
 
 			'';
 		};
