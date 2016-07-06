@@ -7,5 +7,6 @@
 - neovim pluginstall
 - call symlinks and pull-configs on startup
 - add lockscreen
+- uniform gaps
 
 
