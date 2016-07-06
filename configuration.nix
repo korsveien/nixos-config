@@ -18,35 +18,40 @@
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
    environment.systemPackages = with pkgs; [
+	   arc-gtk-theme
 	   chromium
 	   coreutils
-	   screenfetch
 	   dmenu
-	   nodejs
 	   dropbox
 	   dropbox-cli
 	   feh
 	   firefox
 	   ghc
 	   git
+	   gnome3.gtk
+	   gnome3.gnome-tweak-tool
+	   gnome3.gnome_themes_standard
 	   gtk-engine-murrine
+	   haskellPackages.xmobar
 	   htop
 	   httpie
 	   i3lock
 	   irssi
+	   idea.idea-community
 	   neovim
 	   nmap
-	   openjdk
+	   nodejs
 	   rofi
+	   screenfetch
 	   silver-searcher
 	   termite
 	   tree
 	   unzip
 	   vim 
 	   wget
+	   which
 	   xclip
        autojump
-	   haskellPackages.xmobar
    ];
 
 	boot = {
