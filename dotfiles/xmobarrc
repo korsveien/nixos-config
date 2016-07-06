@@ -1,7 +1,7 @@
 Config { font = "xft:Hack:pixelsize=13"
-	   , alpha = 75
+	   , alpha = 99
        , border = NoBorder
-	   , bgColor = "black"
+	   , bgColor = "#333"
 	   , fgColor = "white"
 	   , position = Top
 	   , lowerOnStart = True

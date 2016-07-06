@@ -7,11 +7,7 @@ import XMonad.Layout.Spacing
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeysP)
 
--- put a 2px space around every window
 myLayout = spacing 15 $ Tall 1 (3/100) (1/2)
-
-
--- key bindings
 
 main :: IO ()
 main = do
@@ -24,5 +20,7 @@ xmonad $ defaultConfig { terminal = "termite"
 		, ppLayout = (\_ -> "")
 		, ppTitle = xmobarColor "white" "" . shorten 50
 		}
+	, normalBorderColor = "#333"
+	, focusedBorderColor = "lime green"
 	} `additionalKeysP` [ ("M-w", raiseBrowser)
 						, ("M-e", raiseEditor)]
