@@ -1,5 +1,4 @@
-source $HOME/.secrets
-
+source $HOME/.secrets 
 # Git aliases
 alias g="git"
 alias gst="git status"
@@ -27,6 +26,7 @@ alias zv='nvim $HOME/.zshrc'
 alias xv='nvim $HOME/.xmonad/xmonad.hs'
 
 alias grep='grep --color'
+alias pi="ping -c 2 www.vg.no"
 
 bindkey '^r' history-incremental-search-backward
 
