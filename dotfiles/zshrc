@@ -27,6 +27,7 @@ alias xv='nvim $HOME/.xmonad/xmonad.hs'
 
 alias grep='grep --color'
 alias pi="ping -c 2 www.vg.no"
+alias vim='nvim'
 
 bindkey '^r' history-incremental-search-backward
 
