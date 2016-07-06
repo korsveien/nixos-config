@@ -7,6 +7,7 @@
 - neovim pluginstall
 - call symlinks and pull-configs on startup
 - add lockscreen
-- uniform gaps
+- uniform gap
+- fix alt-gr [z|l|w] (ae, oe, aa)
 
 
