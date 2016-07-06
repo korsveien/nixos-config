@@ -99,9 +99,17 @@
 			slim.defaultUser = "pederpus";
 			slim.autoLogin = true;
 			sessionCommands = ''
+
 				sh /home/pederpus/nixos-config/symlinks.sh &
+
 				sh /home/pederpus/.fehbg &
+
+				rofi &
+
+				xsetroot -cursor_name left_ptr &
+
 				ssh-add &
+
 			'';
 		};
 
