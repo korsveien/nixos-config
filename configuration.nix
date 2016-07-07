@@ -104,7 +104,7 @@
 
 				xrdb -merge $HOME/.Xdefaults
 
-				sh /home/pederpus/.fehbg &
+				sh /home/pederpus/nixos-config/dotfiles/.fehbg &
 
 				rofi &
 
@@ -129,6 +129,8 @@
 		};
 	};
 
+	virtualisation.docker.enable = true;
+
 	environment.sessionVariables = {
 		EDITOR="nvim";
 		BROWSER="firefox";
@@ -151,7 +153,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
    users.extraUsers.pederpus = {
      description = "Peder Korsveien";
-     extraGroups = ["wheel"];
+     extraGroups = ["wheel" "docker"];
      isNormalUser = true;
      uid = 1000;
 	 openssh.authorizedKeys.keyFiles = [
