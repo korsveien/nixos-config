@@ -19,6 +19,7 @@
   # $ nix-env -qaP | grep wget
    environment.systemPackages = with pkgs; [
 	   arc-gtk-theme
+	   bash
 	   chromium
 	   coreutils
 	   dropbox
@@ -60,7 +61,10 @@
 		};
 	};
 
-   networking.hostName = "nixos-vbox"; # Define your hostname.
+	networking = {
+		hostName = "nixos-vbox";
+		extraHosts = "127.0.0.1 localdb";
+	};
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Select internationalisation properties.
