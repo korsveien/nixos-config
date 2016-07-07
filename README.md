@@ -1,7 +1,7 @@
 # nixos-config
 
 ## TODO
-- add idea
+- set up java env
 - add oracle-xe
 - remove reference to non-existant .ssh at startup
 - neovim pluginstall
