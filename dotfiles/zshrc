@@ -8,6 +8,7 @@ alias gcm="git checkout master"
 alias grhh="git reset --hard HEAD"
 alias gco="git checkout"
 alias gc="git commit"
+alias gamend="git commit --amend --reuse-message=HEAD"
 
 alias ..='cd ..'
 
