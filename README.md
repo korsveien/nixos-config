@@ -12,7 +12,7 @@ $ nix-env -i wget
 $ cd /mnt/etc/nixos
 $ wget https://raw.githubusercontent.com/pederpus/nixos-config/master/configuration.nix 
 $ nixos-install
-$ reboot
+$ reboot # Remember to remove the install disk!!
 ```
 
 ### Setting up partitions with fdisk
