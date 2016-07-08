@@ -8,8 +8,9 @@ $ mkswap -L swap /dev/sda2
 $ swapon /dev/sda2
 $ mount /dev/disk/by-label/nixos /mnt
 $ nixos-generate-config --root /mnt
-$ nix-env -i neovim
-$ nvim /mnt/etc/nixos/configuration.nix
+$ nix-env -i wget
+$ cd /mnt/etc/nixos
+$ wget https://raw.githubusercontent.com/pederpus/nixos-config/master/configuration.nix 
 $ nixos-install
 $ reboot
 ```
