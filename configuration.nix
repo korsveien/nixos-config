@@ -160,9 +160,6 @@
      extraGroups = ["wheel" "docker"];
      isNormalUser = true;
      uid = 1000;
-	 openssh.authorizedKeys.keyFiles = [
-		"/home/pederpus/.ssh/id_rsa.pub"
-	 ];
    };
 
   # The NixOS release to be compatible with for stateful data such as databases.
