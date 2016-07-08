@@ -1,7 +1,8 @@
 ## Installing NixOS
 
 ```
-$ fdisk /dev/sda # (or whatever device you want to install on)
+$ fdisk --list
+$ fdisk /dev/sda1 # (see separate instruction for details)
 $ mkfs.ext4 -L nixos /dev/sda1
 $ mkswap -L swap /dev/sda2
 $ swapon /dev/sda2
