@@ -1,8 +1,4 @@
-# nixos-config
-
 # Installation
-
-
 
 ## Installing NixOS
 
