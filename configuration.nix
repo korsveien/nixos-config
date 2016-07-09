@@ -108,7 +108,7 @@
 
 				xrdb -merge $HOME/.Xdefaults
 
-				sh /home/pederpus/nixos-config/dotfiles/.fehbg &
+				sh /home/pederpus/nixos-config/dotfiles/fehbg.sh &
 
 				rofi &
 
@@ -117,7 +117,6 @@
 				ssh-add &
 
 				xmodmap $HOME/.Xmodmap
-
 
 			'';
 		};
