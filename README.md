@@ -34,9 +34,7 @@ $ reboot # Remember to remove the install disk!!
 - set up java env
 - add oracle-xe
 - neovim pluginstall
-- call symlinks and pull-configs on startup
 - add lockscreen
-- uniform gap
 - fix alt-gr z|l|w (ae, oe, aa)
 
 
