@@ -103,21 +103,13 @@
 			slim.defaultUser = "pederpus";
 			slim.autoLogin = true;
 			sessionCommands = ''
-
 				sh /home/pederpus/nixos-config/symlinks.sh &
-
-				xrdb -merge $HOME/.Xdefaults
-
-				sh /home/pederpus/nixos-config/dotfiles/fehbg.sh &
-
+				xrdb -merge $HOME/.Xdefaults &
 				rofi &
-
 				xsetroot -cursor_name left_ptr &
-
+				xmodmap $HOME/.Xmodmap &
+				feh --bg-scale /home/pederpus/nixos-config/background.png &
 				ssh-add &
-
-				xmodmap $HOME/.Xmodmap
-
 			'';
 		};
 
