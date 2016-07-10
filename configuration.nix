@@ -7,7 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      ./hardware-configuration
     ];
 
   nixpkgs.config = {
@@ -15,40 +15,48 @@
   };
 
 
-  # List packages installed in system profile. To search by name, run:
-  # $ nix-env -qaP | grep wget
-   environment.systemPackages = with pkgs; [
-	   arc-gtk-theme
-	   bash
-	   chromium
-	   coreutils
-	   dropbox
-	   dropbox-cli
-	   feh
-	   firefox
-	   ghc
-	   git
-	   haskellPackages.xmobar
-	   htop
-	   httpie
-	   i3lock
-	   irssi
-	   idea.idea-community
-	   neovim
-	   nmap
-	   nodejs
-	   rofi
-	   screenfetch
-	   silver-searcher
-	   termite
-	   tree
-	   unzip
-	   vim 
-	   wget
-	   which
-	   xclip
-       autojump
-   ];
+# List packages installed in system profile. To search by name, run:
+# $ nix-env -qaP | grep wget
+  environment = {
+	  systemPackages = with pkgs; [
+		  bash
+		  arc-gtk-theme
+		  gnome3.eog
+		  chromium
+		  coreutils
+		  dropbox
+		  dropbox-cli
+		  feh
+		  firefox
+		  ghc
+		  git
+		  haskellPackages.xmobar
+		  htop
+		  httpie
+		  i3lock
+		  irssi
+		  idea.idea-community
+		  neovim
+		  nmap
+		  nodejs
+		  rofi
+		  screenfetch
+		  silver-searcher
+		  termite
+		  tree
+		  unzip
+		  wget
+		  which
+		  xclip
+		  autojump
+		  ];
+
+	  variables = {
+		  EDITOR="nvim";
+		  BROWSER="firefox";
+		  XDG_CONFIG_HOME="/home/pederpus/.config";
+	  };
+  };
 
 	boot = {
 		initrd = {
@@ -73,6 +81,7 @@
      defaultLocale = "en_US.UTF-8";
    };
 
+
   # Set your time zone.
   time.timeZone = "Europe/Oslo";
 
@@ -95,42 +104,39 @@
 
 			enable = true;
 			layout = "us";
-		xkbOptions = "eurosign:e";
+			xkbOptions = "eurosign:e, caps:none";
 
 
-		displayManager = {
-			slim.enable = true;
-			slim.defaultUser = "pederpus";
-			slim.autoLogin = true;
-			sessionCommands = ''
-				sh /home/pederpus/nixos-config/symlinks.sh &
-				xrdb -merge $HOME/.Xdefaults &
-				rofi &
-				xsetroot -cursor_name left_ptr &
-				xmodmap $HOME/.Xmodmap &
-				feh --bg-scale /home/pederpus/nixos-config/background.png &
-				ssh-add &
-			'';
-		};
+			displayManager = {
+				slim.enable = true;
+				slim.defaultUser = "pederpus";
+				slim.autoLogin = true;
+				sessionCommands = ''
+					sh /home/pederpus/nixos-config/symlinks.sh &
+					xrdb -merge $HOME/.Xdefaults &
+					rofi &
+					xsetroot -cursor_name left_ptr &
+					xmodmap $HOME/.Xmodmap &
+					feh --bg-scale /home/pederpus/nixos-config/background.png &
+					ssh-add &
+				'';
+			};
 
-		desktopManager.xterm.enable = false;
-		desktopManager.default = "none";
+			desktopManager = {
+				xterm.enable = false;
+                default = "none";
+			};
 
-		windowManager = {
-			xmonad.enable = true;
-			xmonad.enableContribAndExtras = true;
-			default = "xmonad";
-		};
+			windowManager = {
+				xmonad.enable = true;
+				xmonad.enableContribAndExtras = true;
+				default = "xmonad";
+			};
 		};
 	};
 
 	virtualisation.docker.enable = true;
 
-	environment.sessionVariables = {
-		EDITOR="nvim";
-		BROWSER="firefox";
-		XDG_CONFIG_HOME="/home/pederpus/.config";
-	};
 
 	# Enable ssh-add. On by default.
 	programs = {

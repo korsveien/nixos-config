@@ -16,7 +16,7 @@ import qualified Data.Map as M
 
 myLayout = smartBorders $ avoidStruts $ minimize (mkToggle (NOBORDERS ?? FULL ?? EOT) (tiled ||| Mirror tiled ||| Full))
   where
-    tiled   = gaps [(U,5), (R,5), (L,5), (R,5)] $ spacing 5 $ Tall nmaster delta ratio
+    tiled   = gaps [(U,6), (R,6), (L,6), (R,6)] $ spacing 6 $ Tall nmaster delta ratio
 
 	-- The default number of windows in the master pane
     nmaster = 1
@@ -26,7 +26,6 @@ myLayout = smartBorders $ avoidStruts $ minimize (mkToggle (NOBORDERS ?? FULL ??
 
 	-- Percent of screen to increment by when resizing panes
     delta   = 3/100
-
 
 main :: IO ()
 main = do
