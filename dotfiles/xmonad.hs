@@ -11,6 +11,7 @@ import XMonad.Layout.NoBorders
 import XMonad.Layout.MultiToggle.Instances
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeysP)
+import XMonad.Hooks.SetWMName
 
 import qualified Data.Map as M
 
@@ -33,6 +34,7 @@ xmproc <- spawnPipe "xmobar" -- start xmobar
 xmonad $ defaultConfig { terminal = "termite"
 	, manageHook = manageDocks <+> manageHook defaultConfig
 	, layoutHook = avoidStruts $ myLayout
+	, startupHook = setWMName "LG3D" -- to avoid blank gui in java applications
 	, logHook = dynamicLogWithPP xmobarPP
 		{ ppOutput = hPutStrLn xmproc
 		, ppLayout = (\_ -> "")
