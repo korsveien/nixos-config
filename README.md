@@ -31,10 +31,8 @@ $ reboot # Remember to remove the install disk!!
 13. Save and exit by pressing `w`
 
 ## TODO
-- set up java env
 - add oracle-xe
 - neovim pluginstall
 - add lockscreen
-- fix alt-gr z|l|w (ae, oe, aa)
 
 
