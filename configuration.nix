@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./desktop/gtk-theme.nix
     ];
 
   nixpkgs.config = {
@@ -24,8 +25,6 @@
   environment = {
 	  systemPackages = with pkgs; [
 		  bash
-		  arc-gtk-theme
-		  gnome3.eog
 		  chromium
 		  coreutils
 		  dropbox
@@ -39,7 +38,7 @@
 		  httpie
 		  i3lock
 		  irssi
-		  idea.idea-community
+		  idea.idea-community 
 		  neovim
 		  nmap
 		  nodejs
@@ -116,13 +115,12 @@
 				slim.defaultUser = "pederpus";
 				slim.autoLogin = true;
 				sessionCommands = ''
-					sh /home/pederpus/nixos-config/symlinks.sh &
-					xrdb -merge $HOME/.Xdefaults &
-					rofi &
-					xsetroot -cursor_name left_ptr &
-					xmodmap $HOME/.Xmodmap &
-					feh --bg-scale /home/pederpus/nixos-config/background.png &
-					ssh-add &
+					sh /home/pederpus/nixos-config/symlinks.sh
+					xrdb -merge $HOME/.Xdefaults
+					rofi
+					xsetroot -cursor_name left_ptr
+					xmodmap $HOME/.Xmodmap
+					feh --bg-scale /home/pederpus/nixos-config/background.png
 				'';
 			};
 
