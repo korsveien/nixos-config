@@ -158,7 +158,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
    users.extraUsers.pederpus = {
      description = "Peder Korsveien";
-     extraGroups = ["wheel" "docker"];
+     extraGroups = ["wheel" "networkmanager" "docker"];
      isNormalUser = true;
      uid = 1000;
    };
