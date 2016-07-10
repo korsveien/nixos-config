@@ -8,16 +8,20 @@ import XMonad.Layout.Gaps
 import XMonad.Layout.MultiToggle
 import XMonad.Layout.Minimize
 import XMonad.Layout.NoBorders
+import XMonad.Layout.NoBorders
 import XMonad.Layout.MultiToggle.Instances
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeysP)
 import XMonad.Hooks.SetWMName
+import XMonad.Layout.ThreeColumns
 
 import qualified Data.Map as M
 
-myLayout = smartBorders $ avoidStruts $ minimize (mkToggle (NOBORDERS ?? FULL ?? EOT) (tiled ||| Mirror tiled ||| Full))
+myLayout = smartBorders $ avoidStruts $ minimize (mkToggle (NOBORDERS ?? FULL ?? EOT) (tiled ||| threeColumns ||| Full))
   where
-    tiled   = gaps [(U,6), (R,6), (L,6), (R,6)] $ spacing 6 $ Tall nmaster delta ratio
+    tiled   = gaps [(U,4), (R,4), (L,4), (R,4)] $ spacing 4 $ Tall nmaster delta ratio
+
+    threeColumns   = gaps [(U,4), (R,4), (L,4), (R,4)] $ spacing 4 $ ThreeCol nmaster delta (1/3)
 
 	-- The default number of windows in the master pane
     nmaster = 1
@@ -41,7 +45,7 @@ xmonad $ defaultConfig { terminal = "termite"
 		, ppTitle = xmobarColor "white" "" . shorten 50
 		}
 	, normalBorderColor = "#333"
-	, focusedBorderColor = "lime green"
+	, focusedBorderColor = "tomato"
 	} `additionalKeysP` [ ("M-w", raiseBrowser)
 						, ("M-e", raiseEditor)
 						, ("M-p", spawn "rofi -show run")
