@@ -13,6 +13,11 @@
 
   nixpkgs.config = {
 	  allowUnfree = true;
+      packageOverrides = pkgs: rec {
+        idea.idea-community = pkgs.idea.idea-community.override {
+          jdk = pkgs.oraclejdk8;
+        };
+      };
   };
 
   # Run garbage collector each night
@@ -46,6 +51,7 @@
 		  screenfetch
 		  silver-searcher
 		  termite
+          telnet
 		  tree
 		  unzip
 		  wget
@@ -108,6 +114,7 @@
 			enable = true;
 			layout = "us";
 			xkbOptions = "eurosign:e, caps:none";
+            xkbVariant = "altgr-intl";
 
 
 			displayManager = {
