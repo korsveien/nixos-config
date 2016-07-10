@@ -9,7 +9,7 @@ alias grhh="git reset --hard HEAD"
 alias gco="git checkout"
 alias gc="git commit"
 alias gamend="git commit --amend --reuse-message=HEAD"
-alias glg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
+alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 
 
 
