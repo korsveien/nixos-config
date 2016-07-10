@@ -7,12 +7,16 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration
+      ./hardware-configuration.nix
     ];
 
   nixpkgs.config = {
 	  allowUnfree = true;
   };
+
+  # Run garbage collector each night
+  nix.gc.automatic = true;
+  nix.gc.dates = "03:00";
 
 
 # List packages installed in system profile. To search by name, run:
