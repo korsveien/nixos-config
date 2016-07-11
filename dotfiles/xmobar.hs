@@ -1,5 +1,5 @@
-Config { font = "xft:Hack:pixelsize=13"
-	   , alpha = 99
+Config { font = "xft:Hack:pixelsize=14:style=bold"
+	   , alpha = 255
        , border = NoBorder
 	   , bgColor = "#333"
 	   , fgColor = "white"
