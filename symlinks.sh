@@ -28,6 +28,6 @@ ln -s $HOME/nixos-config/termite/config $XDG_CONFIG_HOME/termite
 rm -rf $XDG_CONFIG_HOME/gtk-3.0
 mkdir -p $XDG_CONFIG_HOME/gtk-3.0
 ln -s $HOME/nixos-config/gtk/gtk.css $XDG_CONFIG_HOME/gtk-3.0/gtk.css
-ln -s $HOME/nixos-config/gtk/settings.init $XDG_CONFIG_HOME/gtk-3.0/settings.init
+ln -s $HOME/nixos-config/gtk/settings.ini $XDG_CONFIG_HOME/gtk-3.0/settings.ini
 
 
