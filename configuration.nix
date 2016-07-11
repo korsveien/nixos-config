@@ -35,6 +35,7 @@
 		  dropbox
 		  dropbox-cli
 		  feh
+		  oracle-instantclient
 		  firefox
 		  ghc
 		  git
@@ -58,13 +59,14 @@
 		  unzip
 		  wget
 		  which
+		  sublime3
 		  xclip
 		  autojump
 		  ];
 
 	  variables = {
 		  EDITOR="nvim";
-		  BROWSER="chromium";
+		  BROWSER="chromium-browser";
 		  XDG_CONFIG_HOME="/home/pederpus/.config";
 	  };
   };
