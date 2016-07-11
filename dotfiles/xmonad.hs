@@ -65,8 +65,8 @@ myManageHook = composeAll [
 --
 myLayout =
     (lessBorders OnlyFloat $ avoidStruts $ (
-    spacing 20 $
-    gaps [(U,20), (D,20), (R,20), (L,20)] $
+    spacing 10 $
+    gaps [(U,10), (D,10), (R,10), (L,10)] $
 --  ThreeColMid 1 (3/100) (1/2) |||
     Tall 1 (3/100) (1/2) |||
     Mirror (Tall 1 (3/100) (1/2))) -- |||
@@ -87,7 +87,7 @@ xmobarTitleColor = "#FFB6B0"
 xmobarCurrentWorkspaceColor = "#Af745f"
 
 -- Width of the window border in pixels.
-myBorderWidth = 1
+myBorderWidth = 0
 
 myNormalBorderColor = "#333"
 
@@ -128,7 +128,7 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 myStartupHook =
     spawn "feh --bg-scale $HOME/nixos-config/background.png"
     <+> setDefaultCursor xC_left_ptr
-    -- <+> spawn "compton --backend glx -fcC"
+    <+> spawn "compton -b"
 
 ------------------------------------------------------------------------
 -- Key bindings
@@ -216,7 +216,7 @@ main = do
     xmproc <- spawnPipe "xmobar -d $HOME/.xmonad/xmobar.hs"
     xmonad $ defaults {
         logHook = do
-            fadeInactiveLogHook 0.7
+            fadeInactiveLogHook 0.9
             dynamicLogWithPP $ xmobarPP {
             ppOutput = hPutStrLn xmproc,
             ppTitle = const "",
