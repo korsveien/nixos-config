@@ -9,6 +9,7 @@ import XMonad.Layout.MultiToggle
 import XMonad.Layout.Minimize
 import XMonad.Layout.NoBorders
 import XMonad.Layout.MultiToggle.Instances
+import XMonad.Layout.Fullscreen
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeysP)
 import XMonad.Hooks.SetWMName
@@ -22,7 +23,6 @@ import XMonad.Actions.CycleWS
 import XMonad.Hooks.FadeInactive
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.SetWMName
-import XMonad.Layout.Fullscreen
 import XMonad.Util.Cursor
 import XMonad.Util.WorkspaceCompare
 import qualified XMonad.Hooks.EwmhDesktops as E
@@ -34,7 +34,7 @@ import qualified Data.Map        as M
 -- https://github.com/ruhatch/.dotfiles/blob/master/.xmonad/xmonad.hs
 ------------------------------------------------------------------------
 
-myLayout = smartBorders $ avoidStruts $ minimize (mkToggle (NOBORDERS ?? FULL ?? EOT) (tiled ||| threeColumns ||| Full))
+myLayout = smartBorders $ avoidStruts $ minimize (mkToggle (NOBORDERS ?? FULL ?? EOT) (tiled ||| threeColumns ||| noBorders (fullscreenFull Full)))
   where
     tiled   = gaps [(U,4), (R,4), (L,4), (R,4)] $ spacing 4 $ Tall nmaster delta ratio
 
@@ -135,6 +135,12 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 	, ((modMask .|. shiftMask, xK_w),
 		kill)
 
+	-- Cycle through the available layout algorithms
+	, ((modMask, xK_p),
+	   sendMessage NextLayout)
+
+	-- 
+
 	-- Move focus to the next window
 	, ((modMask, xK_Tab),
 		windows W.focusDown)
@@ -180,7 +186,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- Run xmonad with all the defaults we set up.
 --
 main = do
-    xmproc <- spawnPipe "xmobar -d ~/.xmonad/xmobar.hs"
+    xmproc <- spawnPipe "xmobar"
     xmonad $ defaults {
         logHook = do
             fadeInactiveLogHook 0.7
