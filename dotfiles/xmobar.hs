@@ -6,6 +6,7 @@ Config { font = "xft:Hack:pixelsize=14:style=bold"
 	   , position = Top
 	   , lowerOnStart = True
 	   , allDesktops = False
+	   , textOffset = 20
 	   , persistent = True
        , commands = [ Run Date "%d %b  %H:%M" "date" 10
 			        , Run StdinReader
@@ -13,6 +14,6 @@ Config { font = "xft:Hack:pixelsize=14:style=bold"
 				    ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "      %StdinReader% } { %date%      "
+       , template = "      } %StdinReader%  { %date%      "
        }
 

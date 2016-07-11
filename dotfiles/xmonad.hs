@@ -65,8 +65,8 @@ myManageHook = composeAll [
 --
 myLayout =
     (lessBorders OnlyFloat $ avoidStruts $ (
-    spacing 10 $
-    gaps [(U,10), (D,10), (R,10), (L,10)] $
+    spacing 16 $
+    gaps [(U,16), (D,16), (R,16), (L,16)] $
     ThreeCol 1 (3/100) (1/3) |||
     Tall 1 (3/100) (1/2) ) -- |||
 -- Mirror (Tall 1 (3/100) (1/2))) -- |||
@@ -216,7 +216,7 @@ main = do
     xmproc <- spawnPipe "xmobar -d $HOME/.xmonad/xmobar.hs"
     xmonad $ defaults {
         logHook = do
-            fadeInactiveLogHook 0.9
+            fadeInactiveLogHook 0.8
             dynamicLogWithPP $ xmobarPP {
             ppOutput = hPutStrLn xmproc,
             ppTitle = const "",
