@@ -11,14 +11,7 @@
       ./desktop/gtk-theme.nix
     ];
 
-  nixpkgs.config = {
-	  allowUnfree = true;
-      packageOverrides = pkgs: rec {
-        idea.idea-community = pkgs.idea.idea-community.override {
-          jdk = pkgs.oraclejdk8;
-        };
-      };
-  };
+  nixpkgs.config.allowUnfree = true;
 
   # Run garbage collector each night
   nix.gc.automatic = true;
@@ -128,10 +121,8 @@
 				sessionCommands = ''
 					sh /home/pederpus/nixos-config/symlinks.sh
 					xrdb -merge $HOME/.Xdefaults
-					rofi
-					xsetroot -cursor_name left_ptr
 					xmodmap $HOME/.Xmodmap
-					feh --bg-scale /home/pederpus/nixos-config/background.png
+					rofi
 				'';
 			};
 
