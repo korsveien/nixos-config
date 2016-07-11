@@ -69,9 +69,9 @@ myLayout =
     gaps [(U,20), (D,20), (R,20), (L,20)] $
 --  ThreeColMid 1 (3/100) (1/2) |||
     Tall 1 (3/100) (1/2) |||
-    Mirror (Tall 1 (3/100) (1/2))) |||
+    Mirror (Tall 1 (3/100) (1/2))) -- |||
 --  tabbed shrinkText tabConfig |||
-    Full -- |||
+--  Full -- |||
 --  spiral (6/7)
     ) ||| noBorders (fullscreenFull Full)
 

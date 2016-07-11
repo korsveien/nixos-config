@@ -7,11 +7,11 @@ Config { font = "xft:Hack:pixelsize=14:style=bold"
 	   , lowerOnStart = True
 	   , allDesktops = False
 	   , persistent = True
-       , commands = [ Run Date "%d/%m  %H:%M" "date" 10
+       , commands = [ Run Date "%d/%_m  %H:%M" "date" 10
 			        , Run StdinReader
 				    ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader%} { %date%"
+       , template = "      %StdinReader% } { %date%      "
        }
 
