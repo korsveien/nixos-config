@@ -100,7 +100,7 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- By default, do nothing.
 myStartupHook =
     spawn "feh --bg-scale $HOME/nixos-config/background.png"
-    <+> spawn "compton --backend glx -fcC"
+    -- <+> spawn "compton --backend glx -fcC"
     <+> setDefaultCursor xC_left_ptr
 
 ------------------------------------------------------------------------

@@ -78,6 +78,7 @@
 	networking = {
 		hostName = "nixos-vbox";
 		extraHosts = "127.0.0.1 localdb";
+        wireless.enable = true;
 	};
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -122,7 +123,6 @@
 					sh /home/pederpus/nixos-config/symlinks.sh
 					xrdb -merge $HOME/.Xdefaults
 					xmodmap $HOME/.Xmodmap
-					rofi
 				'';
 			};
 
