@@ -54,6 +54,7 @@
 		  which
 		  sublime3
 		  xclip
+          maven
 		  autojump
 		  ];
 
