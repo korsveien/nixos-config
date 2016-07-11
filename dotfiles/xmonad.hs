@@ -34,20 +34,47 @@ import qualified Data.Map        as M
 -- https://github.com/ruhatch/.dotfiles/blob/master/.xmonad/xmonad.hs
 ------------------------------------------------------------------------
 
-myLayout = smartBorders $ avoidStruts $ minimize (mkToggle (NOBORDERS ?? FULL ?? EOT) (tiled ||| threeColumns ||| noBorders (fullscreenFull Full)))
-  where
-    tiled   = gaps [(U,4), (R,4), (L,4), (R,4)] $ spacing 4 $ Tall nmaster delta ratio
+-----------------------------------------------------------------------
+-- Window rules
+-- Execute arbitrary actions and WindowSet manipulations when managing
+-- a new window. You can use this to, for example, always float a
+-- particular program, or have a client always appear on a particular
+-- workspace.
+--
+-- To find the property name associated with a program, use
+-- > xprop | grep WM_CLASS
+-- and click on the client you're interested in.
+--
+-- To match on the WM_NAME, you can use 'title' in the same way that
 
-    threeColumns   = gaps [(U,4), (R,4), (L,4), (R,4)] $ spacing 4 $ ThreeCol nmaster delta (1/3)
+myManageHook = composeAll [
+    -- className =? "Firefox"          --> doShift (myWorkspaces !! 0),
+    -- className =? "Spotify"          --> doShift (myWorkspaces !! 10),
+    resource  =? "desktop_window"   --> doIgnore,
+    isFullscreen --> (doF W.focusDown <+> doFullFloat)]
 
-	-- The default number of windows in the master pane
-    nmaster = 1
+------------------------------------------------------------------------
+-- Layouts
+-- You can specify and transform your layouts by modifying these values.
+-- If you change layout bindings be sure to use 'mod-shift-space' after
+-- restarting (with 'mod-q') to reset your layout state to the new
+-- defaults, as xmonad preserves your old layout settings by default.
+--
+-- The available layouts.  Note that each layout is separated by |||,
+-- which denotes layout choice.
+--
+myLayout =
+    (lessBorders OnlyFloat $ avoidStruts $ (
+    spacing 20 $
+    gaps [(U,20), (D,20), (R,20), (L,20)] $
+--  ThreeColMid 1 (3/100) (1/2) |||
+    Tall 1 (3/100) (1/2) |||
+    Mirror (Tall 1 (3/100) (1/2))) |||
+--  tabbed shrinkText tabConfig |||
+    Full -- |||
+--  spiral (6/7)
+    ) ||| noBorders (fullscreenFull Full)
 
-	-- Default proportion of screen occupied by master pane
-    ratio =  1/2
-
-	-- Percent of screen to increment by when resizing panes
-    delta   = 3/100
 
 myTerminal = "termite"
 
@@ -60,7 +87,7 @@ xmobarTitleColor = "#FFB6B0"
 xmobarCurrentWorkspaceColor = "#Af745f"
 
 -- Width of the window border in pixels.
-myBorderWidth = 0
+myBorderWidth = 1
 
 myNormalBorderColor = "#333"
 
@@ -100,8 +127,8 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- By default, do nothing.
 myStartupHook =
     spawn "feh --bg-scale $HOME/nixos-config/background.png"
-    -- <+> spawn "compton --backend glx -fcC"
     <+> setDefaultCursor xC_left_ptr
+    -- <+> spawn "compton --backend glx -fcC"
 
 ------------------------------------------------------------------------
 -- Key bindings
@@ -186,7 +213,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- Run xmonad with all the defaults we set up.
 --
 main = do
-    xmproc <- spawnPipe "xmobar"
+    xmproc <- spawnPipe "xmobar -d $HOME/.xmonad/xmobar.hs"
     xmonad $ defaults {
         logHook = do
             fadeInactiveLogHook 0.7
@@ -197,8 +224,8 @@ main = do
             ppCurrent = xmobarColor xmobarCurrentWorkspaceColor "",
             ppSep = "   "
       }
-      , startupHook = setWMName "LG3D" <+> myStartupHook
-     -- , startupHook = myStartupHook
+			, manageHook = manageDocks <+> myManageHook
+			, startupHook = setWMName "LG3D" <+> myStartupHook
   }
 
 ------------------------------------------------------------------------
