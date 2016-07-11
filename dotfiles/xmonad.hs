@@ -168,6 +168,14 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 	  restart "xmonad" True)
 	]
 
+	++
+	
+	-- mod-[1..9] Switch to workspace N
+	-- mod-shift-[1..9], Move client to workspace N
+	[((m .|. modMask, k), windows $ f i)
+		| (i, k) <- zip (XMonad.workspaces conf) ([xK_1 .. xK_9] ++ [xK_0])
+		, (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
+
  ------------------------------------------------------------------------
 -- Run xmonad with all the defaults we set up.
 --
