@@ -39,6 +39,7 @@
 		  ghc
 		  git
 		  haskellPackages.xmobar
+		  hexchat
 		  htop
 		  httpie
 		  i3lock
@@ -53,6 +54,7 @@
 		  termite
           telnet
 		  tree
+		  lxappearance
 		  unzip
 		  wget
 		  which
@@ -62,7 +64,7 @@
 
 	  variables = {
 		  EDITOR="nvim";
-		  BROWSER="firefox";
+		  BROWSER="chromium";
 		  XDG_CONFIG_HOME="/home/pederpus/.config";
 	  };
   };
