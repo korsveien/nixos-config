@@ -56,6 +56,7 @@
 		  xclip
           maven
 		  autojump
+          ant
 		  ];
 
 	  variables = {
