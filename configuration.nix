@@ -54,6 +54,7 @@
 		  wget
 		  which
 		  sublime3
+		  openjdk
 		  xclip
           maven
 		  autojump

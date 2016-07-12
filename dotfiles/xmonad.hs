@@ -138,7 +138,7 @@ myStartupHook =
 -- ("right alt"), which does not conflict with emacs keybindings. The
 -- "windows key" is usually mod4Mask.
 
-myModMask = mod1Mask
+myModMask = mod4Mask
 
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 	----------------------------------------------------------------------
@@ -216,7 +216,7 @@ main = do
     xmproc <- spawnPipe "xmobar -d $HOME/.xmonad/xmobar.hs"
     xmonad $ defaults {
         logHook = do
-            fadeInactiveLogHook 0.8
+            fadeInactiveLogHook 0.95
             dynamicLogWithPP $ xmobarPP {
             ppOutput = hPutStrLn xmproc,
             ppTitle = const "",
