@@ -31,8 +31,8 @@ $ reboot # Remember to remove the install disk!!
 13. Save and exit by pressing `w`
 
 ## TODO
-- add oracle-xe
-- neovim pluginstall
+- add scratchpads
+- open xmonad.hs on startup?
 - add lockscreen
 
 
