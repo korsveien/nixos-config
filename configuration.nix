@@ -12,7 +12,14 @@
 	  ../secrets.nix
     ];
 
-  nixpkgs.config.allowUnfree = true;
+
+  nixpkgs.config = {
+    allowUnfree = true;
+    chromium = {
+      enablePepperFlash = true; # Chromium removed support for Mozilla (NPAPI) plugins so Adobe Flash no longer works
+      enablePepperPDF = true;
+    };
+  };
 
   # Run garbage collector each night
   nix.gc.automatic = true;
