@@ -30,6 +30,8 @@
 # $ nix-env -qaP | grep wget
   environment = {
 	  systemPackages = with pkgs; [
+          scrot
+          imagemagick
 		  bash
 		  chromium
 		  coreutils
@@ -66,6 +68,7 @@
 		  xclip
           maven
 		  autojump
+          file
           ant
 		  ];
 

@@ -80,6 +80,8 @@ myTerminal = "termite"
 
 myLauncher = "rofi -show run"
 
+myScreenLocker = "i3lock -i $HOME/nixos-config/background.png"
+
 -- Color of current window title in xmobar.
 xmobarTitleColor = "#FFB6B0"
 
@@ -195,6 +197,10 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 	-- Push the window back into tiling
 	, ((modMask, xK_t),
 		withFocused $ windows . W.sink)
+
+	-- Restart Xmonad
+	, ((modMask , xK_o),
+	  spawn myScreenLocker)
 
 	-- Restart Xmonad
 	, ((modMask , xK_q),
