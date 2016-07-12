@@ -25,6 +25,7 @@
 		  bash
 		  chromium
 		  coreutils
+		  compton
 		  dropbox
 		  dropbox-cli
 		  feh
