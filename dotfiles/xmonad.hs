@@ -64,7 +64,6 @@ myManageHook = composeAll [
 -- which denotes layout choice.
 --
 myLayout =
-    noBorders (fullscreenFull Full) |||
     (lessBorders OnlyFloat $ avoidStruts $ (
     spacing 16 $
     gaps [(U,16), (D,16), (R,16), (L,16)] $
@@ -74,7 +73,7 @@ myLayout =
 --  tabbed shrinkText tabConfig |||
    -- Full -- |||
 --  spiral (6/7)
-    )
+    ) ||| noBorders (fullscreenFull Full)
 
 
 myTerminal = "termite"
