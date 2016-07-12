@@ -68,11 +68,11 @@ myLayout =
     (lessBorders OnlyFloat $ avoidStruts $ (
     spacing 16 $
     gaps [(U,16), (D,16), (R,16), (L,16)] $
-    Tall 1 (3/100) (1/2) ) |||
+    Tall 1 (3/100) (1/2) ) -- |||
     -- ThreeCol 1 (3/100) (1/3) -- |||
 -- Mirror (Tall 1 (3/100) (1/2))) -- |||
 --  tabbed shrinkText tabConfig |||
-    Full -- |||
+   -- Full -- |||
 --  spiral (6/7)
     )
 
