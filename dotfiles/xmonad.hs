@@ -161,7 +161,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 		setLayout $ XMonad.layoutHook conf)
 
     -- Close focused window
-	, ((modMask .|. shiftMask, xK_w),
+	, ((modMask .|. controlMask, xK_w),
 		kill)
 
 	-- Cycle through the available layout algorithms
