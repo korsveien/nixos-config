@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./desktop/gtk-theme.nix
+	  ../secrets.nix
     ];
 
   nixpkgs.config.allowUnfree = true;
@@ -65,6 +66,7 @@
 		  EDITOR="nvim";
 		  BROWSER="chromium-browser";
 		  XDG_CONFIG_HOME="/home/pederpus/.config";
+		  TNS_ADMIN="/home/pederpus/.config/instantclient/network/admin";
 	  };
   };
 
