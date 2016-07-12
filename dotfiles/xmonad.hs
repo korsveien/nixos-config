@@ -15,6 +15,9 @@ import XMonad.Util.EZConfig(additionalKeysP)
 import XMonad.Hooks.SetWMName
 import XMonad.Layout.ThreeColumns
 
+import XMonad.Util.NamedScratchpad
+import XMonad.Util.Scratchpad
+
 import Data.Maybe
 import Graphics.X11.ExtraTypes
 import System.IO
@@ -52,6 +55,8 @@ myManageHook = composeAll [
     -- className =? "Spotify"          --> doShift (myWorkspaces !! 10),
     resource  =? "desktop_window"   --> doIgnore,
     isFullscreen --> (doF W.focusDown <+> doFullFloat)]
+	<+> (namedScratchpadManageHook myScratchpads)
+
 
 ------------------------------------------------------------------------
 -- Layouts
@@ -94,6 +99,10 @@ myBorderWidth = 0
 myNormalBorderColor = "#333"
 
 myFocusedBorderColor = "tomato"
+
+
+-- Scratchpads
+myScratchpads = [ NS "sublime" "sublime" (className =? "Sublime") (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3)) ]
 
 
 ------------------------------------------------------------------------
@@ -151,6 +160,10 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 	-- Use this to launch programs without a key binding.
 	[ ((modMask, xK_space),
 		spawn myLauncher)
+
+	-- launch sublime as scratchpad
+	, ((modMask, xK_s),
+		namedScratchpadAction myScratchpads "sublime")
 
 	-- Start a terminal
 	, ((modMask, xK_Return),
