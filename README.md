@@ -33,4 +33,4 @@ $ reboot # Remember to remove the install disk!!
 ### TODO
 - Toggle gaps
 - Terminal scratchpad
-- Style rofi launcher
+- Drop shadows
