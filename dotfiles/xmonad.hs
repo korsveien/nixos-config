@@ -100,7 +100,7 @@ myBorderWidth = 1
 
 myNormalBorderColor = "#333"
 
-myFocusedBorderColor = "#4883ff"
+myFocusedBorderColor = xmobarCurrentWorkspaceColor 
 
 
 -- Scratchpads
