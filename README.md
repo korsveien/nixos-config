@@ -30,9 +30,4 @@ $ reboot # Remember to remove the install disk!!
 12. Verify by printing partitions with `p`
 13. Save and exit by pressing `w`
 
-## TODO
-- add scratchpads
-- open xmonad.hs on startup?
-- add lockscreen
-
 
