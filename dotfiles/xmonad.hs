@@ -83,7 +83,7 @@ myLayout =
 
 myTerminal = "termite"
 
-myLauncher = "rofi -show run"
+myLauncher = "rofi -show run -line 10 -eh 2"
 
 myScreenLocker = "i3lock -i $HOME/nixos-config/background.png"
 
