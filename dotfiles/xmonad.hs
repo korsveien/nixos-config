@@ -23,7 +23,7 @@ import Graphics.X11.ExtraTypes
 import System.IO
 import System.Exit
 import XMonad.Actions.CycleWS
-import XMonad.Hooks.FadeInactive
+import XMonad.Hooks.FadeInactive (fadeInactiveLogHook)
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.SetWMName
 import XMonad.Util.Cursor
@@ -85,7 +85,9 @@ myTerminal = "termite"
 
 myLauncher = "rofi -show run -line 4 -eh 2"
 
-myScreenLocker = "i3lock -i $HOME/nixos-config/background.png"
+myWallpaper = "$HOME/nixos-config/wallpapers/road.png"
+
+myScreenLocker = "i3lock -i " ++ myWallpaper
 
 -- Color of current window title in xmobar.
 xmobarTitleColor = "#FFB6B0"
@@ -137,7 +139,7 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 --
 -- By default, do nothing.
 myStartupHook =
-    spawn "feh --bg-scale $HOME/nixos-config/background.png"
+    spawn ("feh --bg-scale " ++ myWallpaper)
     <+> setDefaultCursor xC_left_ptr
     <+> spawn "compton -b"
 
@@ -236,12 +238,12 @@ main = do
     xmonad $ defaults {
         logHook = do
             dynamicLogWithPP $ xmobarPP {
-            ppOutput = hPutStrLn xmproc,
-            ppTitle = const "",
-            ppLayout = const "",
-            ppCurrent = xmobarColor xmobarCurrentWorkspaceColor "",
-            ppSep = "   "
-      }
+				ppOutput = hPutStrLn xmproc,
+				ppTitle = const "",
+				ppLayout = const "",
+				ppCurrent = xmobarColor xmobarCurrentWorkspaceColor "",
+				ppSep = "   "
+			}
 			, manageHook = manageDocks <+> myManageHook
 			, startupHook = setWMName "LG3D" <+> myStartupHook
   }
