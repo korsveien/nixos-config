@@ -34,4 +34,8 @@ rm -rf $XDG_CONFIG_HOME/rofi
 mkdir -p $XDG_CONFIG_HOME/rofi
 ln -s $HOME/nixos-config/rofi/config $XDG_CONFIG_HOME/rofi/config
 
+if [ ! -f $XDG_CONFIG_HOME/compton.conf ]; then
+	ln -s $HOME/nixos-config/compton.conf $XDG_CONFIG_HOME/compton.conf
+fi
+
 

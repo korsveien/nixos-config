@@ -94,11 +94,11 @@ xmobarTitleColor = "#FFB6B0"
 xmobarCurrentWorkspaceColor = "#Af745f"
 
 -- Width of the window border in pixels.
-myBorderWidth = 0
+myBorderWidth = 1
 
 myNormalBorderColor = "#333"
 
-myFocusedBorderColor = "tomato"
+myFocusedBorderColor = "#4883ff"
 
 
 -- Scratchpads
@@ -235,7 +235,6 @@ main = do
     xmproc <- spawnPipe "xmobar -d $HOME/.xmonad/xmobar.hs"
     xmonad $ defaults {
         logHook = do
-            fadeInactiveLogHook 0.95
             dynamicLogWithPP $ xmobarPP {
             ppOutput = hPutStrLn xmproc,
             ppTitle = const "",
