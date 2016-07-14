@@ -35,3 +35,4 @@ $ reboot # Remember to remove the install disk!!
 - Terminal scratchpad
 - Make sratchpad disappear on mouseclick outside window
 - Drop shadows
+- Fix full screen bug
