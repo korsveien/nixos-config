@@ -32,12 +32,12 @@ $ reboot # Remember to remove the install disk!!
 
 
 ### To change to nixos-unstable channel
-``
-nix-channel --add https://nixos.org/channels/nixos-unstable nixos
-nix-channel --remove nixpkgs
-sudo nix-channel --update
+```
+$ nix-channel --add https://nixos.org/channels/nixos-unstable nixos
+$ nix-channel --remove nixpkgs
+$ sudo nix-channel --update
 
-``
+```
 
 ### TODO
 - Toggle gaps
