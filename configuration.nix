@@ -49,7 +49,7 @@
 		  httpie
 		  i3lock
 		  irssi
-		  idea.idea-ultimate
+		  idea.idea-community
 		  neovim
 		  nmap
 		  nodejs
