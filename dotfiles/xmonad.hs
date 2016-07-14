@@ -96,7 +96,7 @@ xmobarTitleColor = "#FFB6B0"
 xmobarCurrentWorkspaceColor = "#Af745f"
 
 -- Width of the window border in pixels.
-myBorderWidth = 1
+myBorderWidth = 0
 
 myNormalBorderColor = "#333"
 
