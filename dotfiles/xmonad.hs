@@ -85,7 +85,7 @@ myTerminal = "termite"
 
 myLauncher = "rofi -show run -line 4 -eh 2"
 
-myWallpaper = "$HOME/nixos-config/wallpapers/road.png"
+myWallpaper = "$HOME/nixos-config/wallpapers/milky-way.png"
 
 myScreenLocker = "i3lock -i " ++ myWallpaper
 
@@ -100,7 +100,7 @@ myBorderWidth = 1
 
 myNormalBorderColor = "#333"
 
-myFocusedBorderColor = xmobarCurrentWorkspaceColor 
+myFocusedBorderColor = "#4883ff"
 
 
 -- Scratchpads
