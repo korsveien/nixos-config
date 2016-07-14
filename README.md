@@ -33,4 +33,5 @@ $ reboot # Remember to remove the install disk!!
 ### TODO
 - Toggle gaps
 - Terminal scratchpad
+- Make sratchpad disappear on mouseclick outside window
 - Drop shadows
