@@ -122,14 +122,14 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
     ((modMask, button1),
      (\w -> focus w >> mouseMoveWindow w))
 
-    -- mod-button2, Raise the window to the top of the stack
-    , ((modMask, button2),
-       (\w -> focus w >> windows W.swapMaster))
+     -- mod-button2, Raise the window to the top of the stack
+    , ((modMask,button2), 
+    	(\w -> focus w >> windows W.shiftMaster))
 
     -- mod-button3, Set the window to floating mode and resize by dragging
-    , ((modMask, button3),
-       (\w -> focus w >> kill))
--- you may also bind events to the mouse scroll wheel (button4 and button5)
+    , ((modMask,button3), 
+    	(\w -> focus w >> mouseResizeWindow w
+                                       >> windows W.shiftMaster))
   ]
 
 ------------------------------------------------------------------------
