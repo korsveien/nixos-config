@@ -45,4 +45,3 @@ $ sudo nix-channel --update
 - Make sratchpad disappear on mouseclick outside window
 - Drop shadows
 - Fix full screen bug
-- Fix mouse resize bug
