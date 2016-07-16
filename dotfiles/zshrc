@@ -40,6 +40,9 @@ alias vim='nvim'
 
 bindkey '^r' history-incremental-search-backward
 
+# Emacs bindings (ctrl-e etc.)
+bindkey -e
+
 # Prompt customization
 
 autoload -Uz colors && colors
