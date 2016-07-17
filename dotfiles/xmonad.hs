@@ -25,7 +25,6 @@ import System.Exit
 import XMonad.Actions.CycleWS
 import XMonad.Hooks.FadeInactive (fadeInactiveLogHook)
 import XMonad.Hooks.ManageHelpers
-import XMonad.Hooks.SetWMName
 import XMonad.Util.Cursor
 import XMonad.Util.WorkspaceCompare
 import qualified XMonad.Hooks.EwmhDesktops as E
@@ -82,7 +81,7 @@ myLayout =
     ) 
 
 
-myTerminal = "termite"
+myTerminal = "urxvt"
 
 myLauncher = "rofi -show run -line 4 -eh 2"
 
@@ -105,8 +104,13 @@ myFocusedBorderColor = "#4883ff"
 
 
 -- Scratchpads
-myScratchpads = [ NS "sublime" "sublime" (className =? "Sublime") (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3)) ]
+-- myScratchpads = [ NS "sublime" "sublime" (className =? "Sublime") (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3)) ]
 
+myScratchpads :: NamedScratchpads
+myScratchpads =
+    [ NS "sublime" "sublime" (className =? "Sublime") (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3))
+    -- , NS "scratchpad" scratchpad    (orle      =? "scratchpad")  nonFloating
+    ]
 
 ------------------------------------------------------------------------
 -- Mouse bindings
@@ -142,7 +146,7 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 myStartupHook =
     spawn ("feh --bg-scale " ++ myWallpaper)
     <+> setDefaultCursor xC_left_ptr
-    <+> spawn "compton -b"
+    <+> spawn "compton -bcCG -i 0.8"
 
 ------------------------------------------------------------------------
 -- Key bindings

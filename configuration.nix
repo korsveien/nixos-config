@@ -56,7 +56,7 @@
 		  rofi
 		  screenfetch
 		  silver-searcher
-		  termite
+          rxvt_unicode
           telnet
 		  tree
 		  lxappearance
