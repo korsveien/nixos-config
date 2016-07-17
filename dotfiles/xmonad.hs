@@ -49,10 +49,16 @@ import qualified Data.Map        as M
 --
 -- To match on the WM_NAME, you can use 'title' in the same way that
 
+-- Workspaces
+-- The default number of workspaces (virtual screens) and their names.
+--
+myWorkspaces = ["1:dev","2:web","9:chat"] ++ map show [6..9]
+
 myManageHook = composeAll [
-    -- className =? "Firefox"          --> doShift (myWorkspaces !! 0),
+    -- className =? "Firefox"          --> doShift (myWorkspaces !! 0)
+    className =? "idea1-community"  --> doShift "1:dev"
     -- className =? "Spotify"          --> doShift (myWorkspaces !! 10),
-    resource  =? "desktop_window"   --> doIgnore,
+    ,resource  =? "desktop_window"   --> doIgnore,
     isFullscreen --> (doF W.focusDown <+> doFullFloat)]
 	<+> (namedScratchpadManageHook myScratchpads)
 
@@ -60,7 +66,7 @@ myManageHook = composeAll [
 ------------------------------------------------------------------------
 -- Layouts
 -- You can specify and transform your layouts by modifying these values.
--- If you change layout bindings be sure to use 'mod-shift-space' after
+-- If you change layout bindings0 be sure to use 'mod-shift-space' after
 -- restarting (with 'mod-q') to reset your layout state to the new
 -- defaults, as xmonad preserves your old layout settings by default.
 --
@@ -103,13 +109,10 @@ myNormalBorderColor = "#333"
 myFocusedBorderColor = "#4883ff"
 
 
--- Scratchpads
--- myScratchpads = [ NS "sublime" "sublime" (className =? "Sublime") (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3)) ]
-
 myScratchpads :: NamedScratchpads
 myScratchpads =
     [ NS "sublime" "sublime" (className =? "Sublime") (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3))
-    -- , NS "scratchpad" scratchpad    (orle      =? "scratchpad")  nonFloating
+    , NS "urxvt" "urxvt" (className =? "URxvt") (customFloating $ W.RationalRect 0 0 1 1)
     ]
 
 ------------------------------------------------------------------------
@@ -146,15 +149,10 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 myStartupHook =
     spawn ("feh --bg-scale " ++ myWallpaper)
     <+> setDefaultCursor xC_left_ptr
-    <+> spawn "compton -bcCG -i 0.8"
+    <+> spawn "compton -bcCG --config $XDG_CONFIG_DIR/compton.conf"
 
 ------------------------------------------------------------------------
 -- Key bindings
---
--- modMask lets you specify which modkey you want to use. The default
--- is mod1Mask ("left alt").  You may also consider using mod3Mask
--- ("right alt"), which does not conflict with emacs keybindings. The
--- "windows key" is usually mod4Mask.
 
 myModMask = mod4Mask
 
@@ -172,9 +170,13 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 	, ((modMask, xK_s),
 		namedScratchpadAction myScratchpads "sublime")
 
-	-- Start a terminal
+	-- launch terminal as scratchpad
 	, ((modMask, xK_Return),
-	    spawn $ XMonad.terminal conf)
+		scratchpadSpawnActionTerminal myTerminal)
+
+	-- Start a terminal
+	, ((modMask .|. shiftMask,  xK_Return),
+	    spawn "termite")
 
     -- Reset the layouts on the current workspace to default
 	, ((modMask .|. shiftMask, xK_space),
@@ -187,8 +189,6 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 	-- Cycle through the available layout algorithms
 	, ((modMask, xK_p),
 	   sendMessage NextLayout)
-
-	-- 
 
 	-- Move focus to the next window
 	, ((modMask, xK_Tab),
@@ -207,7 +207,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 		windows W.focusMaster)
 
     -- Swap the focused window and the master window
-	, ((modMask .|. shiftMask, xK_Return),
+	, ((modMask .|. shiftMask, xK_m),
 		windows W.swapMaster)
 
 	-- Start the app launcher
