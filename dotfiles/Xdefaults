@@ -40,5 +40,3 @@ URxvt*scrollBar:        false
 URxvt*scrollBar_right:        true
 URxvt*scrollColor:        #000000
 URxvt.internalBorder: 8
-
-urxvt*depth: 32

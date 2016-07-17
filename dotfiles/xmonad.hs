@@ -87,7 +87,7 @@ myLayout =
     ) 
 
 
-myTerminal = "urxvt"
+myTerminal = "URxvt"
 
 myLauncher = "rofi -show run -line 4 -eh 2"
 
@@ -112,7 +112,7 @@ myFocusedBorderColor = "#4883ff"
 myScratchpads :: NamedScratchpads
 myScratchpads =
     [ NS "sublime" "sublime" (className =? "Sublime") (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3))
-    , NS "urxvt" "urxvt" (className =? "URxvt") (customFloating $ W.RationalRect 0 0 1 1)
+    , NS "URxvt" "URxvt" (className =? "URxvt") (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3))
     ]
 
 ------------------------------------------------------------------------
@@ -129,9 +129,9 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
     ((modMask, button1),
      (\w -> focus w >> mouseMoveWindow w))
 
-     -- mod-button2, Raise the window to the top of the stack
+     -- mod-button2, Kill the window
     , ((modMask,button2), 
-    	(\w -> focus w >> windows W.shiftMaster))
+    	(\_ -> kill))
 
     -- mod-button3, Set the window to floating mode and resize by dragging
     , ((modMask,button3), 
@@ -175,15 +175,15 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 		scratchpadSpawnActionTerminal myTerminal)
 
 	-- Start a terminal
-	, ((modMask .|. shiftMask,  xK_Return),
-	    spawn "termite")
+	--, ((modMask .|. shiftMask,  xK_Return),
+	--    spawn "urxvt")
 
     -- Reset the layouts on the current workspace to default
 	, ((modMask .|. shiftMask, xK_space),
 		setLayout $ XMonad.layoutHook conf)
 
     -- Close focused window
-	, ((modMask .|. controlMask, xK_w),
+	, ((modMask .|. shiftMask, xK_w),
 		kill)
 
 	-- Cycle through the available layout algorithms
