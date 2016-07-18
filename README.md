@@ -40,8 +40,4 @@ $ sudo nix-channel --update
 ```
 
 ### TODO
-- Toggle gaps
-- Terminal scratchpad
 - Make sratchpad disappear on mouseclick outside window
-- Drop shadows
-- Fix full screen bug
