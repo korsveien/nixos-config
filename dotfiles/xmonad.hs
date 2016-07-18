@@ -114,7 +114,7 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 myStartupHook =
     spawn ("feh --bg-scale " ++ myWallpaper)
     <+> setDefaultCursor xC_left_ptr
-    <+> spawn "compton -bcCG --config $XDG_CONFIG_DIR/compton.conf" -- FIXME: need to rerun this command for scratchpad terminal
+    <+> spawn "compton -bcCG --config $HOME/nixos-config/compton.conf"
 
 
 myScratchpads :: NamedScratchpads
