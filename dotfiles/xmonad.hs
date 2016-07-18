@@ -23,7 +23,6 @@ import Graphics.X11.ExtraTypes
 import System.IO
 import System.Exit
 import XMonad.Actions.CycleWS
-import XMonad.Hooks.FadeInactive (fadeInactiveLogHook)
 import XMonad.Hooks.ManageHelpers
 import XMonad.Util.Cursor
 import XMonad.Util.WorkspaceCompare
@@ -35,32 +34,6 @@ import qualified Data.Map        as M
 -- Inspirations:
 -- https://github.com/ruhatch/.dotfiles/blob/master/.xmonad/xmonad.hs
 ------------------------------------------------------------------------
-
------------------------------------------------------------------------
--- Window rules
--- Execute arbitrary actions and WindowSet manipulations when managing
--- a new window. You can use this to, for example, always float a
--- particular program, or have a client always appear on a particular
--- workspace.
---
--- To find the property name associated with a program, use
--- > xprop | grep WM_CLASS
--- and click on the client you're interested in.
---
--- To match on the WM_NAME, you can use 'title' in the same way that
-
--- Workspaces
--- The default number of workspaces (virtual screens) and their names.
---
-myWorkspaces = ["1:dev","2:web","9:chat"] ++ map show [6..9]
-
-myManageHook = composeAll [
-    -- className =? "Firefox"          --> doShift (myWorkspaces !! 0)
-    className =? "idea1-community"  --> doShift "1:dev"
-    -- className =? "Spotify"          --> doShift (myWorkspaces !! 10),
-    ,resource  =? "desktop_window"   --> doIgnore,
-    isFullscreen --> (doF W.focusDown <+> doFullFloat)]
-	<+> (namedScratchpadManageHook myScratchpads)
 
 
 ------------------------------------------------------------------------
@@ -78,16 +51,11 @@ myLayout =
     (lessBorders OnlyFloat $ avoidStruts $ (
     spacing 16 $
     gaps [(U,16), (D,16), (R,16), (L,16)] $
-    Tall 1 (3/100) (1/2) ) -- |||
-    -- ThreeCol 1 (3/100) (1/3) -- |||
--- Mirror (Tall 1 (3/100) (1/2))) -- |||
---  tabbed shrinkText tabConfig |||
-   -- Full -- |||
---  spiral (6/7)
+    Tall 1 (3/100) (1/2) )
     ) 
 
 
-myTerminal = "URxvt"
+myTerminal = "urxvt"
 
 myLauncher = "rofi -show run -line 4 -eh 2"
 
@@ -109,11 +77,7 @@ myNormalBorderColor = "#333"
 myFocusedBorderColor = "#4883ff"
 
 
-myScratchpads :: NamedScratchpads
-myScratchpads =
-    [ NS "sublime" "sublime" (className =? "Sublime") (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3))
-    , NS "URxvt" "URxvt" (className =? "URxvt") (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3))
-    ]
+
 
 ------------------------------------------------------------------------
 -- Mouse bindings
@@ -151,6 +115,22 @@ myStartupHook =
     <+> setDefaultCursor xC_left_ptr
     <+> spawn "compton -bcCG --config $XDG_CONFIG_DIR/compton.conf"
 
+
+myScratchpads :: NamedScratchpads
+myScratchpads =
+    [ NS "sublime" "sublime" (className =? "Sublime") (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3))
+    ]
+
+myWorkspaces = ["1:dev","2:web","9:chat"] ++ map show [6..9]
+
+myManageHook = composeAll [ 
+	className =? "idea-community"  --> doShift "1:dev"
+    , resource  =? "desktop_window"   --> doIgnore
+    ]
+
+	<+> (namedScratchpadManageHook myScratchpads)
+	<+> scratchpadManageHook (W.RationalRect 0 0 1 1)
+
 ------------------------------------------------------------------------
 -- Key bindings
 
@@ -174,9 +154,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 	, ((modMask, xK_Return),
 		scratchpadSpawnActionTerminal myTerminal)
 
-	-- Start a terminal
-	--, ((modMask .|. shiftMask,  xK_Return),
-	--    spawn "urxvt")
+	-- Start a terminal, set -name in order for it to avoid being fullscreened by scratchpadSpawnActionTerminal
+	, ((modMask .|. shiftMask,  xK_Return),
+	    spawn "urxvt -name terminal")
 
     -- Reset the layouts on the current workspace to default
 	, ((modMask .|. shiftMask, xK_space),
