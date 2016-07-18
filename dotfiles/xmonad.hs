@@ -1,8 +1,11 @@
 import System.IO
+import System.Exit
+
 import XMonad
+
 import XMonad.Actions.WindowGo
-import XMonad.Hooks.ManageDocks
-import XMonad.Hooks.DynamicLog
+import XMonad.Actions.CycleWS
+
 import XMonad.Layout.Spacing
 import XMonad.Layout.Gaps
 import XMonad.Layout.MultiToggle
@@ -10,22 +13,23 @@ import XMonad.Layout.Minimize
 import XMonad.Layout.NoBorders
 import XMonad.Layout.MultiToggle.Instances
 import XMonad.Layout.Fullscreen
-import XMonad.Util.Run(spawnPipe)
-import XMonad.Util.EZConfig(additionalKeysP)
-import XMonad.Hooks.SetWMName
-import XMonad.Layout.ThreeColumns
 
+import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.SetWMName
+import XMonad.Hooks.FadeWindows
+import XMonad.Hooks.ManageHelpers
+
+import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.NamedScratchpad
 import XMonad.Util.Scratchpad
 
 import Data.Maybe
 import Graphics.X11.ExtraTypes
-import System.IO
-import System.Exit
-import XMonad.Actions.CycleWS
-import XMonad.Hooks.ManageHelpers
+
 import XMonad.Util.Cursor
 import XMonad.Util.WorkspaceCompare
+
 import qualified XMonad.Hooks.EwmhDesktops as E
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -78,7 +82,6 @@ myFocusedBorderColor = "#4883ff"
 
 
 
-
 ------------------------------------------------------------------------
 -- Mouse bindings
 --
@@ -99,8 +102,7 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 
     -- mod-button3, Set the window to floating mode and resize by dragging
     , ((modMask,button3), 
-    	(\w -> focus w >> mouseResizeWindow w
-                                       >> windows W.shiftMaster))
+    	(\w -> focus w >> mouseResizeWindow w >> windows W.shiftMaster))
   ]
 
 ------------------------------------------------------------------------
@@ -109,11 +111,10 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- with mod-q.  Used by, e.g., XMonad.Layout.PerWorkspace to initialize
 -- per-workspace layout choices.
 --
--- By default, do nothing.
 myStartupHook =
     spawn ("feh --bg-scale " ++ myWallpaper)
     <+> setDefaultCursor xC_left_ptr
-    <+> spawn "compton -bcCG --config $XDG_CONFIG_DIR/compton.conf"
+    <+> spawn "compton -bcCG --config $XDG_CONFIG_DIR/compton.conf" -- FIXME: need to rerun this command for scratchpad terminal
 
 
 myScratchpads :: NamedScratchpads
@@ -124,12 +125,14 @@ myScratchpads =
 myWorkspaces = ["1:dev","2:web","9:chat"] ++ map show [6..9]
 
 myManageHook = composeAll [ 
-	className =? "idea-community"  --> doShift "1:dev"
-    , resource  =? "desktop_window"   --> doIgnore
+	appName =? "jetbrains-idea-ce" --> doShift "1:dev"  -- FIXME
+    , resource  =? "desktop_window" --> doIgnore
     ]
 
 	<+> (namedScratchpadManageHook myScratchpads)
 	<+> scratchpadManageHook (W.RationalRect 0 0 1 1)
+
+
 
 ------------------------------------------------------------------------
 -- Key bindings
