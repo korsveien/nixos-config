@@ -38,4 +38,9 @@ if [ ! -f $XDG_CONFIG_HOME/compton.conf ]; then
 	ln -s $HOME/nixos-config/compton.conf $XDG_CONFIG_HOME/compton.conf
 fi
 
+echo "Attempting to symlink dotfiles"
+ln $HOME/dotfiles $HOME/nixos/dotfiles
+
+echo "Done!"
+
 
