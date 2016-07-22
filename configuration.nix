@@ -32,6 +32,7 @@
 	  systemPackages = with pkgs; [
           scrot
           imagemagick
+          elmPackages.elm
 		  bash
 		  chromium
 		  coreutils
@@ -64,7 +65,7 @@
 		  wget
 		  which
 		  sublime3
-		  openjdk
+          oraclejdk8psu
 		  xclip
           maven
 		  autojump
